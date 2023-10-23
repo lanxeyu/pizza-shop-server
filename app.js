@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const logger = require('morgan')
 
-const orderRoutes = require('./routers/order')
+const orderRoutes = require('./routes/order')
 
 const app = express()
 

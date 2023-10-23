@@ -2,7 +2,7 @@ const db = require('../database/connect')
 
 class Order {
     constructor({ order_id, order_number, cart, revenue, notes}) {
-        this.id = order_id;
+        this.order_id = order_id;
         this.order_number = order_number;
         this.cart = cart;
         this.revenue = revenue;
@@ -18,6 +18,26 @@ class Order {
         return response.rows.map(r => new Order(r));
     }
     
+
+    static async findById(order_id) {
+        const response = await db.query("SELECT * FROM orders WHERE order_id = $1", [order_id])
+
+        if (response.rows.length !=1) {
+            throw new Error('Unable to find that order.')
+        }
+        return new Order(response.rows[0])
+    }
+    
+
+    async updateOrderDelivered(data) {
+        const response = await db.query("UPDATE orders SET order_delivered = $1 WHERE order_id = $2 RETURNING *", [data.order_delivered, this.order_id])
+
+        if (response.rows.length != 1) {
+            throw new Error('Unable to update order')
+        }
+        return new Order(response.rows[0])
+    }
+
 
     static async create(orderData) {
         const { order_number, revenue, notes, cart } = orderData;

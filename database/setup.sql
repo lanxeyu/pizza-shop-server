@@ -2,7 +2,6 @@ DROP TABLE IF EXISTS toppings;
 DROP TABLE IF EXISTS pizzas;
 DROP TABLE IF EXISTS orders;
 
-
 CREATE TABLE orders (
     order_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     order_number VARCHAR(8) NOT NULL,
@@ -10,14 +9,13 @@ CREATE TABLE orders (
     notes TEXT,
     order_received BOOLEAN DEFAULT true,
     order_received_timestamp TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    order_prepared BOOLEAN DEFAULT false,
-    order_prepared_timestamp TIMESTAMP WITH TIME ZONE,
     order_pickedup BOOLEAN DEFAULT false,
     order_pickedup_timestamp TIMESTAMP WITH TIME ZONE,
     order_delivered BOOLEAN DEFAULT false,
-    order_delivered_timestamp TIMESTAMP WITH TIME ZONE
+    order_delivered_timestamp TIMESTAMP WITH TIME ZONE,
+    order_claimed BOOLEAN DEFAULT false,
+    order_claimed_timestamp TIMESTAMP WITH TIME ZONE
 );
-
 
 CREATE TABLE pizzas (
     pizza_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
