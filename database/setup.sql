@@ -8,8 +8,16 @@ CREATE TABLE orders (
     order_number VARCHAR(8) NOT NULL,
     revenue NUMERIC(10, 2) NOT NULL,
     notes TEXT,
-    timestamp TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    order_received BOOLEAN DEFAULT true,
+    order_received_timestamp TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    order_prepared BOOLEAN DEFAULT false,
+    order_prepared_timestamp TIMESTAMP WITH TIME ZONE,
+    order_pickedup_ BOOLEAN DEFAULT false,
+    order_pickedup_timestamp TIMESTAMP WITH TIME ZONE,
+    order_delivered BOOLEAN DEFAULT false,
+    order_delivered_timestamp TIMESTAMP WITH TIME ZONE
 );
+
 
 CREATE TABLE pizzas (
     pizza_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
