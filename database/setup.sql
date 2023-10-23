@@ -12,7 +12,7 @@ CREATE TABLE orders (
     order_received_timestamp TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     order_prepared BOOLEAN DEFAULT false,
     order_prepared_timestamp TIMESTAMP WITH TIME ZONE,
-    order_pickedup_ BOOLEAN DEFAULT false,
+    order_pickedup BOOLEAN DEFAULT false,
     order_pickedup_timestamp TIMESTAMP WITH TIME ZONE,
     order_delivered BOOLEAN DEFAULT false,
     order_delivered_timestamp TIMESTAMP WITH TIME ZONE

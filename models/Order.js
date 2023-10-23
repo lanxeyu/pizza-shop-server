@@ -11,13 +11,13 @@ class Order {
 
 
     static async getAll() {
-        const response = await db.query("SELECT * FROM orders;")
+        const response = await db.query("SELECT * FROM orders;");
         if (response.rows.length === 0) {
-            throw new Error("No orders available.")
+            throw new Error("No orders available.");
         }
-        return response.rows.map(r => new Order(r))
+        return response.rows.map(r => new Order(r));
     }
-
+    
 
     static async create(orderData) {
         const { order_number, revenue, notes, cart } = orderData;
