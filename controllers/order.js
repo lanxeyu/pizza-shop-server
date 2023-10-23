@@ -16,13 +16,6 @@ async function updateOrderDelivered(req, res) {
         const data = req.body;
         const orderToUpdate = await Order.findById(order_id);
         const result = await orderToUpdate.updateOrderDelivered(data);
-
-        const subscription = req.body.subscription; // Ensure you have the subscription data in the request body
-        const payload = { title: 'Order Delivered' };
-
-        // Send notification to client
-        sendPushNotification(subscription, payload);
-
         res.status(200).json(result);
     } catch (err) {
         res.status(404).json({ error: err.message });
@@ -31,11 +24,17 @@ async function updateOrderDelivered(req, res) {
 
 async function create (req, res) {
     try {
-        const data = req.body
-        const newOrder = await Order.create(data)
-        res.status(201).json(newOrder)
+        const data = req.body;
+        const subscription = req.body.subscription;
+
+        const newOrder = await Order.create(data);
+
+        const payload = { title: 'Your order has been received!' };
+        await sendPushNotification(subscription, payload);
+
+        res.status(201).json(newOrder);
     } catch (err) {
-        res.status(400).json({ error: err.message} )
+        res.status(400).json({ error: err.message });
     }
 }
 
