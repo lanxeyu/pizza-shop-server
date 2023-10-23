@@ -24,32 +24,27 @@ CREATE TABLE toppings (
     topping_name VARCHAR(50) NOT NULL
 );
 
--- Example entries for the 'orders' table
 INSERT INTO orders (order_number, revenue, notes) VALUES
     ('12345678', 25.99, 'No mushrooms'),
     ('98765432', 19.99, 'Extra cheese');
 
--- Example entries for the 'pizzas' table (related to the first order)
 INSERT INTO pizzas (order_id, size) VALUES
     (1, 'Medium'),
     (1, 'Large');
 
--- Example entries for the 'pizzas' table (related to the second order)
 INSERT INTO pizzas (order_id, size) VALUES
     (2, 'Small'),
     (2, 'Medium'),
     (2, 'Large');
 
--- Example entries for the 'toppings' table (related to the first order)
 INSERT INTO toppings (pizza_id, order_id, topping_name) VALUES
     (1, 1, 'Pepperoni'),
-    (2, 1, 'Mushrooms'), -- Added another topping
-    (2, 1, 'Peppers');  -- Added another topping
+    (2, 1, 'Mushrooms'),
+    (2, 1, 'Peppers'); 
 
--- Example entries for the 'toppings' table (related to the second order)
 INSERT INTO toppings (pizza_id, order_id, topping_name) VALUES
     (3, 2, 'Sausage'),
-    (4, 2, 'Olives'),  -- Added another topping
+    (4, 2, 'Olives'),
     (5, 2, 'Onions');
 
 
