@@ -1,7 +1,6 @@
 const Order = require("../models/Order")
 
 async function index (req, res) {
-    console.log('controller')
     try {
         const orders = await Order.getAll()
         res.status(200).json(orders)

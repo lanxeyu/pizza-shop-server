@@ -10,7 +10,6 @@ class Order {
 
 
     static async getAll() {
-        console.log('model')
         const response = await db.query("SELECT * FROM orders;")
         if (response.rows.length === 0) {
             throw new Error("No orders available.")
