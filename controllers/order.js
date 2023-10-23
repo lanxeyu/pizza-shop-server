@@ -1,4 +1,5 @@
 const Order = require("../models/Order")
+const { sendPushNotification } = require('../services/notification.js');
 
 async function index (req, res) {
     try {
@@ -9,12 +10,18 @@ async function index (req, res) {
     }
 }
 
-async function updateOrderDelivered(req, res, sseClients) {
+async function updateOrderDelivered(req, res) {
     try {
         const order_id = req.params.id;
         const data = req.body;
         const orderToUpdate = await Order.findById(order_id);
         const result = await orderToUpdate.updateOrderDelivered(data);
+
+        const subscription = req.body.subscription; // Ensure you have the subscription data in the request body
+        const payload = { title: 'Order Delivered' };
+
+        // Send notification to client
+        sendPushNotification(subscription, payload);
 
         res.status(200).json(result);
     } catch (err) {
