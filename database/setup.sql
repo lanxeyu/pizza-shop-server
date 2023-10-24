@@ -30,6 +30,23 @@ CREATE TABLE toppings (
     topping_name VARCHAR(50) NOT NULL
 );
 
+-- Create a trigger function for order_delivered
+CREATE OR REPLACE FUNCTION update_order_delivered_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.order_delivered = true THEN
+    NEW.order_delivered_timestamp = NOW();
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Create a trigger that calls the trigger function for order_delivered
+CREATE TRIGGER update_order_delivered_timestamp_trigger
+BEFORE INSERT OR UPDATE ON orders
+FOR EACH ROW
+EXECUTE FUNCTION update_order_delivered_timestamp();
+
 INSERT INTO orders (order_number, revenue, notes) VALUES
     ('12345678', 25.99, 'No mushrooms'),
     ('98765432', 19.99, 'Extra cheese');
