@@ -1,12 +1,19 @@
 const db = require('../database/connect')
 
 class Order {
-    constructor({ order_id, order_number, cart, revenue, notes}) {
+    constructor({ order_id, order_number, revenue, notes, order_received, order_received_timestamp, order_pickedup, order_delivered, order_delivered_timestamp, order_pickedup_timestamp, order_claimed, order_claimed_timestamp}) {
         this.order_id = order_id;
         this.order_number = order_number;
-        this.cart = cart;
         this.revenue = revenue;
         this.notes = notes;
+        this.order_received = order_received;
+        this.order_received_timestamp = order_received_timestamp;
+        this.order_pickedup = order_pickedup;
+        this.order_pickedup_timestamp = order_pickedup_timestamp;
+        this.order_delivered = order_delivered;
+        this.order_delivered_timestamp = order_delivered_timestamp;
+        this.order_claimed = order_claimed;
+        this.order_claimed_timestamp = order_claimed_timestamp; 
     }
 
 
