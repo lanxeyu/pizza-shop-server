@@ -48,8 +48,8 @@ FOR EACH ROW
 EXECUTE FUNCTION update_order_delivered_timestamp();
 
 INSERT INTO orders (order_number, revenue, notes) VALUES
-    ('12345678', 25.99, 'No mushrooms'),
-    ('98765432', 19.99, 'Extra cheese');
+    ('12345678', 25.99, 'Leave order at the lobby'),
+    ('98765432', 19.99, 'Extra cheese please! Thank you!');
 
 INSERT INTO pizzas (order_id, size) VALUES
     (1, 'Medium'),
