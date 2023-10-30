@@ -1,5 +1,7 @@
 # Pizza Shop Server
 
+👉 https://pizzashop-server.onrender.com/
+
 This is the backend API for a pizza ordering app.
 
 [Frontend Repo](https://github.com/lanxeyu/pizza-shop)
