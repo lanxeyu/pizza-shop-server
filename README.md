@@ -1,10 +1,11 @@
-# Pluto's Pizza
+# Pizza Shop Server
+
 This is the backend API for a pizza ordering app.
 
-[Frontend Repo](https://github.com/lanxeyu/plutos-pizza-client)
+[Frontend Repo](https://github.com/lanxeyu/pizza-shop)
 
-## How to Run:
-1. Clone this repo: `git clone git@github.com:lanxeyu/plutos-pizza-server.git`
+## How to Run Locally:
+1. Clone this repo: `git clone git@github.com:lanxeyu/pizza-shop-server.git`
 2. In the project folder, create a **'.env'** file and specify the following parameters within the file:<br>
     PORT = 3000<br>
     DB_URL = {*PostgreSQL database URL of your choice*}
