@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 dotenv.config()
 
-const publicVapidKey = 'BIgp7JGC-EZKn2Fcvt7iBFQLlDj-iVzWU3I8ZlzrwhSuzXRHa23KsVmyk_cWKLGY9yBBx0esawbCzKkRrSer7cU';
+const publicVapidKey = 'BH9_qhRn_59xQ44j_7sFcM9MZfE-k-_Lk2SzUvs2_XoNdotQB4thDAm543PSmBADMHNSC9MNVIrDG0YGAZVj62Q';
 const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
 
 webpush.setVapidDetails('mailto:test@test.com', publicVapidKey, privateVapidKey);
@@ -28,7 +28,7 @@ app.use(logger('dev'))
 
 app.get("/", (req, res) => {
     res.json({
-        title: "Pluto's Pizza Sales",
+        title: "Pizza Shop Sales",
     })
 })
 
