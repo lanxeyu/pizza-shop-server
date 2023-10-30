@@ -4,6 +4,7 @@ const logger = require('morgan');
 const webpush = require('web-push');
 const bodyParser = require('body-parser');
 const path = require('path');
+const dotenv = require('dotenv')
 
 const orderRoutes = require('./routes/order');
 
@@ -15,8 +16,10 @@ app.use(express.static(path.join(__dirname, "client")));
 
 app.use(bodyParser.json());
 
+dotenv.config()
+
 const publicVapidKey = 'BIgp7JGC-EZKn2Fcvt7iBFQLlDj-iVzWU3I8ZlzrwhSuzXRHa23KsVmyk_cWKLGY9yBBx0esawbCzKkRrSer7cU';
-const privateVapidKey = 'nFRrhg3G_giv5lh19z3Gq1nNoqF2GuirHAv4lYomuDM';
+const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
 
 webpush.setVapidDetails('mailto:test@test.com', publicVapidKey, privateVapidKey);
 
